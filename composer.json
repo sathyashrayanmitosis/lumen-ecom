@@ -1,0 +1,109 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2.5",
+        "cviebrock/eloquent-sluggable": "4.3 - 7",
+        "fideloper/proxy": "^4.2",
+        "fruitcake/laravel-cors": "^1.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "illuminate/support": "~5.5|~6.0|~7.0",
+        "konekt/address": "~1.1",
+        "konekt/appshell": "~1.5",
+        "konekt/concord": "~1.4",
+        "konekt/enum": "~2.1",
+        "konekt/laravel-migration-compatibility": "~1.1",
+        "konekt/user": "~1.3",
+        "laravel/framework": "^7.0",
+        "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.0",
+        "spatie/laravel-medialibrary": "^7.3"
+    },
+    "require-dev": {
+        "facade/ignition": "^2.0",
+        "fzaninotto/faker": "^1.9.1",
+        "mockery/mockery": "^1.3.1",
+        "nunomaduro/collision": "^4.1",
+        "phpunit/phpunit": "^8.5",
+        "orchestra/testbench": "~3.5|~4.0|~5.0",
+        "orchestra/database": "~3.5|~4.0|~5.0",
+        "konekt/enum": "~2.1",
+        "cviebrock/eloquent-sluggable": "4.3 - 7"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Mitosis\\Framework\\": "packages/mitosis/framework/src",
+            "Mitosis\\Cart\\": "packages/mitosis/cart/src",
+            "Mitosis\\Category\\": "packages/mitosis/category/src",
+            "Mitosis\\Channel\\": "packages/mitosis/channel/src",
+            "Mitosis\\Checkout\\": "packages/mitosis/checkout/src",
+            "Mitosis\\Contracts\\": "packages/mitosis/contracts/src",
+            "Mitosis\\Order\\": "packages/mitosis/order/src",
+            "Mitosis\\Product\\": "packages/mitosis/product/src",
+            "Mitosis\\Properties\\": "packages/mitosis/properties/src",
+            "Mitosis\\Support\\": "packages/mitosis/support/src"
+            
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/",
+            "Mitosis\\Framework\\": "packages/mitosis/framework/src",
+            "Mitosis\\Cart\\": "packages/mitosis/cart/src",
+            "Mitosis\\Category\\": "packages/mitosis/category/src",
+            "Mitosis\\Channel\\": "packages/mitosis/channel/src",
+            "Mitosis\\Checkout\\": "packages/mitosis/checkout/src",
+            "Mitosis\\Contracts\\": "packages/mitosis/contracts/src",
+            "Mitosis\\Order\\": "packages/mitosis/order/src",
+            "Mitosis\\Product\\": "packages/mitosis/product/src",
+            "Mitosis\\Properties\\": "packages/mitosis/properties/src",
+            "Mitosis\\Support\\": "packages/mitosis/support/src",
+
+            "Mitosis\\Framework\\Tests\\": "packages/mitosis/framework/tests",
+            "Mitosis\\Cart\\Tests\\": "packages/mitosis/cart/tests",
+            "Mitosis\\Category\\Tests\\": "packages/mitosis/category/tests",
+            "Mitosis\\Channel\\Tests\\": "packages/mitosis/channel/tests",
+            "Mitosis\\Checkout\\Tests\\": "packages/mitosis/checkout/tests",
+            "Mitosis\\Contracts\\Tests\\": "packages/mitosis/contracts/tests",
+            "Mitosis\\Order\\Tests\\": "packages/mitosis/order/tests",
+            "Mitosis\\Product\\Tests\\": "packages/mitosis/product/tests",
+            "Mitosis\\Properties\\Tests\\": "packages/mitosis/properties/tests",
+            "Mitosis\\Support\\Tests\\": "packages/mitosis/support/tests"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    }
+}

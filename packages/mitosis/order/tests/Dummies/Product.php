@@ -1,0 +1,16 @@
+<?php
+
+
+namespace Mitosis\Order\Tests\Dummies;
+
+use Illuminate\Database\Eloquent\Model;
+use Mitosis\Contracts\Buyable;
+use Mitosis\Support\Traits\BuyableModel;
+use Mitosis\Support\Traits\BuyableNoImage;
+
+class Product extends Model implements Buyable
+{
+    use BuyableModel, BuyableNoImage;
+
+    protected $guarded = ['id'];
+}

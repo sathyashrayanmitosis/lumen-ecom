@@ -1,0 +1,24 @@
+{
+    "name": "mitosis/product",
+    "description": "Mitosis Product Module",
+    "type": "library",
+    "license": "MIT",        
+    "require": {
+        "php": "^7.2",
+        "konekt/concord": "~1.4",
+        "konekt/enum": "~2.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.2 - 7.5|~8.0|~9.0",
+        "orchestra/testbench": "~3.5|~4.0|~5.0",
+        "cviebrock/eloquent-sluggable": "4.3 - 7"
+    },
+    "autoload": {
+        "psr-4": { "Mitosis\\Product\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mitosis\\Product\\Tests\\": "tests/"
+        }
+    }
+}

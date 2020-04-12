@@ -1,0 +1,39 @@
+language: php
+
+cache:
+  directories:
+  - "$HOME/.composer/cache"
+
+php:
+  - '7.2'
+  - '7.3'
+  - '7.4'
+
+env:
+  - LARAVEL=5.5
+  - LARAVEL=5.6
+  - LARAVEL=5.7
+  - LARAVEL=5.8
+  - LARAVEL=6.0
+  - LARAVEL=6.18
+  - LARAVEL=7.0
+  - LARAVEL=7.3
+
+script:
+  - vendor/bin/phpunit -c phpunit.xml
+
+before_install:
+  - MINOR=`echo $LARAVEL | sed 's/[5|6|7]\.\([0-9]\+\)/\1/'`
+  - '[[ $LARAVEL =~ ^6\.[0-9]+$ ]] && MAJOR=6 || MAJOR=5'
+  - '[[ $LARAVEL =~ ^7\.[0-9]+$ ]] && MAJOR=7 || true'
+  - '[ 6 -eq $MAJOR ] && ORCH=4 || ORCH=3'
+  - '[ 7 -eq $MAJOR ] && ORCH=5 || true'
+  - composer require "illuminate/support:${MAJOR}.${MINOR}.*" --no-update -v
+  - composer require "illuminate/console:${MAJOR}.${MINOR}.*" --no-update -v
+
+install: composer install --no-interaction
+
+notifications:
+  email: false
+  slack:
+    secure: Lz0lL5lanRlDKfSNlZpa2A06q/QIxvWGdfKjr+OBrLgmAKrCPqav6SPWSQg9BKXRFYoqa1uUYWDKcbMHPL1vGGhgG+jaLbRq9IZTFJjO+k4ftU6uKaGc4Q4ERr+pqPl2K7MmvwyUTDx2Bwcau8aCNsYGoK56tmMUfwVCF69pQHmXUQq1mnWijqSWCBeaV32MpEhkPtcVePvyy8zlgGVVu+l8rpoVyiPdMBGxpqTOucRmGAPPgor5HCJfNlqvcythKsTfnZtAFuvWdgYr4/J/cwjkYD2N/fXiAqy3krkOpEsDEam8u7JQNHvchOEy89SKouU0/9xo9s39B5WpzoUv/X6dyM70KV1bXjdboN62S6QJXZ6lY1OGOQCeDEkDyv2FPDvQi+wM1Q5+7VgnN7KlRSN+rSGZX3yc87xrjemspHbj3ib3zTdH8P1ouym2RRVG7fenWeNkhZGhxjSz4qZsu10X+GYGtiF36CopumpjGuSlQZ5wQzVNKI4G+AcG55N691hBJLViFBlmwoykpKKLJaGDt/zYHZU2dLPEN0JkPsln66QGFfeI4frYCqPuKZa8owjYFpuFpozd6AEWqr7ic4zOb2f5a6TCLwXAhgsR8aicTLW+a09qDVTiuR/TUe8QbfbCMLrTbn0OWrtfvAH9nyLHeHPB53SoCizQkJ0cFho=

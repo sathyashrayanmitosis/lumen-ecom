@@ -1,0 +1,31 @@
+{
+    "name": "mitosis/order",
+    "description": "Mitosis Order Module",
+    "type": "library",
+    "license": "MIT",
+    
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    
+    "require": {
+        "php": "^7.2",
+        "konekt/concord": "~1.4",
+        "konekt/user": "~1.3",
+        "konekt/address": "~1.1",
+        "konekt/laravel-migration-compatibility": "~1.1"
+       
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.2 - 7.5|~8.0|~9.0",
+        "orchestra/testbench": "~3.5|~4.0|~5.0",
+        "orchestra/database": "~3.5|~4.0|~5.0"
+    },
+    "autoload": {
+        "psr-4": { "Mitosis\\Order\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mitosis\\Order\\Tests\\": "tests/"
+        }
+    }
+}
